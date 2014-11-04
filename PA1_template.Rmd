@@ -33,13 +33,13 @@ hist(dayTotals$steps, main="Total Steps per Day",
      xlab="Total Steps", col="red")
 ```
 
-The mean total steps per day can the be calculated:
+The mean total steps per day can the be calculated (10766.19):
 
 ```{r}
 mean(dayTotals$steps)
 ```
 
-As can the median total steps per day:
+As can the median total steps per day (10765):
 
 ```{r}
 median(dayTotals$steps)
@@ -60,6 +60,12 @@ in each 5 minute intercal:
 ```{r}
 with(intervalMeans, plot(x=interval, y=steps, type='l',
                         main='Average steps per 5 minute interval'))
+```
+
+And finding the 5 minute interval that, on average, contains the most steps (835):
+
+```{r}
+intervalMeans$interval[which.max(intervalMeans$steps)]
 ```
 
 ## Imputing missing values

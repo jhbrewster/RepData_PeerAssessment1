@@ -38,7 +38,7 @@ hist(dayTotals$steps, main="Total Steps per Day",
 
 ![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3-1.png) 
 
-The mean total steps per day can the be calculated:
+The mean total steps per day can the be calculated (10766.19):
 
 
 ```r
@@ -49,7 +49,7 @@ mean(dayTotals$steps)
 ## [1] 10766.19
 ```
 
-As can the median total steps per day:
+As can the median total steps per day (10765):
 
 
 ```r
@@ -80,6 +80,17 @@ with(intervalMeans, plot(x=interval, y=steps, type='l',
 ```
 
 ![plot of chunk unnamed-chunk-7](figure/unnamed-chunk-7-1.png) 
+
+And finding the 5 minute interval that, on average, contains the most steps (835):
+
+
+```r
+intervalMeans$interval[which.max(intervalMeans$steps)]
+```
+
+```
+## [1] 835
+```
 
 ## Imputing missing values
 
@@ -148,7 +159,7 @@ hist(newDayTotals$steps, main="Total Steps per Day",
      xlab="Total Steps", col="blue")
 ```
 
-![plot of chunk unnamed-chunk-13](figure/unnamed-chunk-13-1.png) 
+![plot of chunk unnamed-chunk-14](figure/unnamed-chunk-14-1.png) 
 
 The mean total steps per day can then be calculated:
 
@@ -203,6 +214,6 @@ xyplot(steps ~ interval | weekday, newIntervalMeans, type='l',
        layout=c(1,2), ylab='Number of steps')
 ```
 
-![plot of chunk unnamed-chunk-18](figure/unnamed-chunk-18-1.png) 
+![plot of chunk unnamed-chunk-19](figure/unnamed-chunk-19-1.png) 
 
 This shows that while there are some similarities, there are clearly differences in the activity patterns between weekdays and weekends.
