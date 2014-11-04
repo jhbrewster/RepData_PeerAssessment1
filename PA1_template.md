@@ -171,31 +171,33 @@ Note that the mean is still 10766.19, however the median is slightly higher than
 
 ## Are there differences in activity patterns between weekdays and weekends?
 
+First add a 'weekday' variable to newActivity, which is a factor either having the value 'weekday' or 'weekend':
+
 
 ```r
 day <- weekdays(as.POSIXct(newActivity$date, format="%Y-%m-%d"))
 newActivity$weekday <- 'weekday'
 newActivity$weekday[day == 'Saturday' | day == 'Sunday'] <- 'weekend'
 newActivity$weekday <- as.factor(newActivity$weekday)
-
-newIntervalMeans <- aggregate(steps ~ interval + weekday,
-                              data=newActivity, FUN="mean")
-
-
-par(mfrow = c(1, 2), main="Average Steps per Interval")
 ```
 
-```
-## Warning in par(mfrow = c(1, 2), main = "Average Steps per Interval"):
-## "main" is not a graphical parameter
-```
+Then, as earlier, aggregate the average steps pre interval in the new dataset:
+
 
 ```r
-with(newIntervalMeans[newIntervalMeans$weekday=='weekday', ],
-     plot(x=interval, y=steps, type='l'))
-
-with(newIntervalMeans[newIntervalMeans$weekday=='weekend', ],
-     plot(x=interval, y=steps, type='l'))
+newIntervalMeans <- aggregate(steps ~ interval + weekday,
+                              data=newActivity, FUN="mean")
 ```
 
-![](./PA1_template_files/figure-html/unnamed-chunk-16-1.png) 
+And create a plot of average steps per interval, split by weekday/weekend:
+
+
+```r
+library(lattice)
+xyplot(steps ~ interval | weekday, newIntervalMeans, type='l',
+       layout=c(1,2), ylab='Number of steps')
+```
+
+![](./PA1_template_files/figure-html/unnamed-chunk-18-1.png) 
+
+This shows that while there are some similarities, there are clearly differences in the activity patterns between weekdays and weekends.
