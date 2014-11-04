@@ -1,4 +1,9 @@
-# Reproducible Research: Peer Assessment 1
+---
+title: "Reproducible Research: Peer Assessment 1"
+output: 
+  html_document:
+    keep_md: true
+---
 
 
 ## Loading and preprocessing the data
@@ -31,7 +36,7 @@ hist(dayTotals$steps, main="Total Steps per Day",
      xlab="Total Steps", col="red")
 ```
 
-![](./PA1_template_files/figure-html/unnamed-chunk-3-1.png) 
+![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3-1.png) 
 
 The mean total steps per day can the be calculated:
 
@@ -74,7 +79,7 @@ with(intervalMeans, plot(x=interval, y=steps, type='l',
                         main='Average steps per 5 minute interval'))
 ```
 
-![](./PA1_template_files/figure-html/unnamed-chunk-7-1.png) 
+![plot of chunk unnamed-chunk-7](figure/unnamed-chunk-7-1.png) 
 
 ## Imputing missing values
 
@@ -143,7 +148,7 @@ hist(newDayTotals$steps, main="Total Steps per Day",
      xlab="Total Steps", col="blue")
 ```
 
-![](./PA1_template_files/figure-html/unnamed-chunk-13-1.png) 
+![plot of chunk unnamed-chunk-13](figure/unnamed-chunk-13-1.png) 
 
 The mean total steps per day can then be calculated:
 
@@ -198,6 +203,6 @@ xyplot(steps ~ interval | weekday, newIntervalMeans, type='l',
        layout=c(1,2), ylab='Number of steps')
 ```
 
-![](./PA1_template_files/figure-html/unnamed-chunk-18-1.png) 
+![plot of chunk unnamed-chunk-18](figure/unnamed-chunk-18-1.png) 
 
 This shows that while there are some similarities, there are clearly differences in the activity patterns between weekdays and weekends.
